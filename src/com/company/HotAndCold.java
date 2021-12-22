@@ -16,13 +16,17 @@ public class HotAndCold {
         }
         int hot = 0;
         int cold = 0;
+        String hidTemp = hiddentStr;
 
         for (int i = 0; i < hiddentStr.length(); i++) {
-            if (hiddentStr.charAt(i) == guessStr.charAt(i)) {
+            char dig = guessStr.charAt(i);
+            String strDig = String.valueOf(dig);
+            if (hiddentStr.charAt(i) == dig) {
                 hot++;
             }
-            if (hiddentStr.contains(String.valueOf(guessStr.charAt(i)))) {
+            if (hidTemp.contains(strDig)) {
                 cold++;
+                hidTemp = hidTemp.replaceFirst(strDig,"");
             }
         }
         cold-=hot;
@@ -68,6 +72,39 @@ public class HotAndCold {
 
         String case9 = getHint("1807", "9180");
         assertHint(9, case9, "0H3C");
+
+        String case10 = getHint("4185", "5481");
+        assertHint(10, case10, "1H3C");
+
+        String case11 = getHint("4185", "4583");
+        assertHint(11, case11, "2H1C");
+
+        String case12 = getHint("4185", "5555");
+        assertHint(12, case12, "1H0C");
+
+        String case13 = getHint("4185", "5454");
+        assertHint(13, case13, "0H2C");
+
+        String case14 = getHint("5571", "1555");
+        assertHint(14, case14, "1H2C");
+
+        String case15 = getHint("6688", "8866");
+        assertHint(15, case15, "0H4C");
+
+        String case16 = getHint("1111", "2111");
+        assertHint(16, case16, "3H0C");
+
+        String case17 = getHint("1234", "2341");
+        assertHint(17, case17, "0H4C");
+
+        String case18 = getHint("1111", "abcd");
+        assertHint(18, case18, "0H0C");
+
+        String case19 = getHint("aabb", "dabc");
+        assertHint(19, case19, "2H0C");
+
+        String case20 = getHint("1112", "2221");
+        assertHint(20, case20, "0H2C");
     }
 
 }

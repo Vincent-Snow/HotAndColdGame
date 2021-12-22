@@ -11,7 +11,7 @@ public class HotAndCold {
     public String getHint(String hiddentStr, String guessStr)
     {
         String hotAndColdCount = "0H0C";
-        if (guessStr.length() != 4) {
+        if (guessStr.length() != hiddentStr.length()) {
             return hotAndColdCount;
         }
         int hot = 0;
